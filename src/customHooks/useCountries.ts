@@ -7,14 +7,18 @@ export const useCountries = (filterName: string, filterRegion: string, deletedCo
   const [countries, setCountries] = useState<Country[]>([]);
   const [filteredCountries, setFilteredCountries] = useState<Country[]>([]);
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
+    setIsLoading(true);
     fetchCountries()
       .then((data) => {
         setCountries(data);
+        setIsLoading(false);
       })
       .catch(() => {
         setErrorMessage(USER_MESSAGES.apiErrorMessage);
+        setIsLoading(false);
       });
   }, []);
 
@@ -51,5 +55,5 @@ export const useCountries = (filterName: string, filterRegion: string, deletedCo
     filterCountries();
   }, [countries, filterName, filterRegion, filterCountries]);
 
-  return { countries, filteredCountries, errorMessage };
+  return { countries, isLoading, filteredCountries, errorMessage };
 };

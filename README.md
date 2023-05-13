@@ -6,7 +6,7 @@ Welcome to the World Countries project. This project is a web application that a
 
 - View a list of countries with details such as name, region, population, and area.
 - Filter countries by name or region.
-- Sort countries by name, region, population, or area.
+- Sort countries by population, or area.
 
 ## Installation
 
